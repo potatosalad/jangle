@@ -1,0 +1,2 @@
+module Jangle::BaseHelper
+end

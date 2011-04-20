@@ -1,6 +1,19 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '>= 3.0.7'
+
+gem 'warden'
+gem 'devise', '~> 1.3.1'
+
+gem 'mongoid', '~> 2.0'
+gem 'bson_ext', '~> 1.3'
+gem 'mongoid-tree', :require => 'mongoid/tree'
+
+gem 'formtastic', '~> 1.2.3'
+gem 'inherited_resources', '~> 1.2.2'
+gem 'carrierwave', '~> 0.5.3'
+
+gem 'liquid'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
