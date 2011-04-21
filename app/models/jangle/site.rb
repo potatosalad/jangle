@@ -39,6 +39,4 @@ class Jangle::Site
     :presence   => true,
     :uniqueness => true,
     :format     => { :with => /^[\w\.\-]+$/ }
-
-  # -- Named Scopes ---------------------------------------------------------
-  scope :match_domain, lambda { |domain| { :any_in => { :domains => [*domain] } } }
+end

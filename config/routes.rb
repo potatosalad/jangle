@@ -1,4 +1,15 @@
 Jangle::Application.routes.draw do
+
+  namespace :jangle, :path => Jangle.config.admin_route_prefix, :except => :show do
+    get '/' => redirect(Jangle.config.admin_route_redirect)
+    resources :pages
+    resources :sites
+    resources :layouts
+    resources :templates
+    resources :widgets
+    resources :snippets
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

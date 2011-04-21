@@ -15,6 +15,7 @@ GEM
       rack-mount (~> 0.6.14)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
+    active_link_to (0.0.6)
     activemodel (3.0.7)
       activesupport (= 3.0.7)
       builder (~> 2.1.2)
@@ -50,6 +51,7 @@ GEM
     inherited_resources (1.2.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
+    liquid (2.2.2)
     mail (2.2.17)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -99,11 +101,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to
   bson_ext (~> 1.3)
   carrierwave (~> 0.5.3)
   devise (~> 1.3.1)
   formtastic (~> 1.2.3)
   inherited_resources (~> 1.2.2)
+  liquid
   mongoid (~> 2.0)
   mongoid-tree
   rails (>= 3.0.7)

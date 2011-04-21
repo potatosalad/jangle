@@ -1,7 +1,5 @@
-require 'comfortable_mexican_sofa'
+require 'jangle'
 require 'rails'
-require 'paperclip'
-require 'active_link_to'
 require 'mime/types'
 
 module Jangle

@@ -1,0 +1,1 @@
+require 'jangle/formtastic/jangle_form_builder'

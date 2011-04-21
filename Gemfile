@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '>= 3.0.7'
 
+gem 'active_link_to'
+
 gem 'warden'
 gem 'devise', '~> 1.3.1'
 

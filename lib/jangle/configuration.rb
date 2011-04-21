@@ -48,7 +48,7 @@ module Jangle
       @seed_data_path       = nil
       @admin_route_prefix   = 'jangle'
       @admin_route_redirect = "/#{@admin_route_prefix}/pages"
-      @auto_manage_sites    = true
+      @auto_manage_sites    = false
       @disable_irb          = true
       @enable_caching       = true
       @upload_file_options  = {}

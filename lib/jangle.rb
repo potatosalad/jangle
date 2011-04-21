@@ -8,6 +8,9 @@ require 'jangle/configuration'
 require 'jangle/logger'
 require 'jangle/liquid'
 require 'jangle/mongoid'
+require 'jangle/routing'
+require 'jangle/form_builder'
+require 'jangle/cms_form_builder'
 =begin
 [ 'jangle/http_auth',
   'jangle/rails_extensions',
@@ -37,12 +40,18 @@ module Jangle
     def configure
       yield configuration
     end
-    
+
     # Accessor for Jangle::Configuration
     def configuration
       @configuration ||= Configuration.new
     end
     alias :config :configuration
+
+    def logger(message)
+      if Jangle.config.enable_logs == true
+        Rails.logger.info(message)
+      end
+    end
 
   end
 end

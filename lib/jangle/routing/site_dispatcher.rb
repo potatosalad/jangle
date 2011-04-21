@@ -41,7 +41,8 @@ module Jangle
         end
 
         def render_no_site_error
-          render :template => "/jangle/errors/no_site", :layout => false
+          flash[:error] = 'No Site defined for this hostname. Create it now.'
+          return redirect_to(new_jangle_site_path)
         end
 
       end

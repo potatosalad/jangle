@@ -1,11 +1,16 @@
 module Jangle
-  class BaseController < ApplicationController < InheritedResources::Base
+  class BaseController < InheritedResources::Base
 
+    include InheritedResources::DSL
     include Jangle::Routing::SiteDispatcher
 
-    before_filter :authenticate_admin!
+    layout 'jangle/application'
+
+    #before_filter :authenticate_admin!
 
     before_filter :require_site
+
+    actions :all, :except => [:show]
 
     respond_to :html
 

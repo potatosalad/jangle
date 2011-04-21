@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Jangle :: View</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-Blegh
-<%= yield %>
-
-</body>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title><%= Jangle.config.cms_title %></title>
+    <%= stylesheet_link_tag :jangle, :cache => ('_cms' if Jangle.config.enable_caching) %>
+    <%= javascript_include_tag :jangle, :cache => ('_cms' if Jangle.config.enable_caching) %>
+    <%= csrf_meta_tag %>
+    <%= yield :head %>
+  </head>
+  <body class='c_<%= params[:controller].idify %> a_<%= params[:action].idify %>'>
+    <div class='body_wrapper'>
+      <div class='left_column'>
+        <div class='left_column_content'>
+          <% unless Jangle.config.auto_manage_sites %>
+            <%= active_link_to 'Sites', jangle_sites_path %>
+          <% end %>
+          <%= active_link_to 'Layouts', jangle_layouts_path %>
+          <%= active_link_to 'Pages', jangle_pages_path %>
+          <%= active_link_to 'Templates', jangle_templates_path %>
+          <%= active_link_to 'Widgets', jangle_widgets_path %>
+          <%= active_link_to 'Snippets', jangle_snippets_path %>
+        </div>
+      </div>
+      <div class='right_column'>
+        <div class='right_column_content'>
+          <%= yield :right_column %>
+        </div>
+      </div>
+      <div class='center_column'>
+        <% flash.each do |type, message| %>
+          <div class='flash <%= type %>'><%= message %></div>
+        <% end %>
+        <div class='center_column_content'>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
