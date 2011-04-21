@@ -9,6 +9,7 @@ gem 'devise', '~> 1.3.1'
 
 gem 'mongoid', '~> 2.0'
 gem 'bson_ext', '~> 1.3'
+gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 
 gem 'formtastic', '~> 1.2.3'

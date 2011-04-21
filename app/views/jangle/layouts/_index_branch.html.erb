@@ -1,0 +1,23 @@
+<% jangle_layout ||= index_branch %>
+
+<li id='jangle_layout_<%= jangle_layout.id %>'>
+  <div class='item'>
+    <div class='icon'></div>
+    <div class='action_links'>
+      <%= link_to 'Add Child Layout', new_jangle_layout_path(:'jangle_layout[parent_id]' => jangle_layout.id) %>
+      <%= link_to 'Edit', edit_jangle_layout_path(jangle_layout) %>
+      <%= link_to 'Delete', jangle_layout_path(jangle_layout), :method => :delete, :confirm => 'Are you sure?' %>
+    </div>
+    <div class='label'>
+      <%= link_to jangle_layout.label, edit_jangle_layout_path(jangle_layout) %>
+      <div class='sublabel'>
+        <%= link_to jangle_layout.slug, edit_jangle_layout_path(jangle_layout) %>
+      </div>
+    </div>
+  </div>
+  <% if jangle_layout.children.present? %>
+    <ul>
+      <%= render :partial => 'index_branch', :collection => jangle_layout.children %>
+    </ul>
+  <% end %>
+</li>

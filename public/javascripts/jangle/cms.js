@@ -7,7 +7,7 @@ $.CMS = function(){
     $.CMS.slugify();
     $.CMS.tree_methods();
     $.CMS.load_page_blocks();
-    $.CMS.enable_rich_text();
+    //$.CMS.enable_rich_text();
     $.CMS.enable_codemirror();
     $.CMS.enable_date_picker();
     $.CMS.enable_desc_toggle();
@@ -32,8 +32,8 @@ $.CMS = function(){
     },
     
     slugify: function(){
-      $('input#slugify').bind('keyup.cms', function() {
-        var slug_input = $('input#slug');
+      $('input.slugify').bind('keyup.cms', function() {
+        var slug_input = $('input.slug');
         var delimiter = slug_input.hasClass('delimiter-underscore') ? '_' : '-';
         slug_input.val( slugify( $(this).val(), delimiter ) );
       });
@@ -125,7 +125,7 @@ $.CMS = function(){
     },
 
     enable_codemirror: function() {
-      $('textarea.code').each(function(i, element) {
+      $('textarea.code.html').each(function(i, element) {
         CodeMirror.fromTextArea(element, {
           basefiles: '/javascripts/jangle/codemirror/codemirror_base.min.js',
           stylesheet: [
@@ -146,11 +146,11 @@ $.CMS = function(){
         });
       });
       
-      $('textarea.code_css').each(function(i, element){
+      $('textarea.code.css').each(function(i, element){
         $.CMS.addCodeMirrorEditor(null, $(element), 'CSS');
       });
       
-      $('textarea.code_js').each(function(i, element){
+      $('textarea.code.js').each(function(i, element){
         $.CMS.addCodeMirrorEditor(null, $(element), 'JS');
       });
     },

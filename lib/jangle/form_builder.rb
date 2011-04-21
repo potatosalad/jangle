@@ -27,6 +27,10 @@ module Jangle
       template.content_tag(:div, super(*args), :class => 'label')
     end
 
+    def select(*args)
+      template.content_tag(:div, super(*args), :class => 'value')
+    end
+
     def basic_input_helper(form_helper_method, type, method, options) #:nodoc:
       html_options = options.delete(:input_html) || {}
       html_options = default_string_options(method, type).merge(html_options) if [:numeric, :string, :password, :text, :phone, :search, :url, :email].include?(type)
@@ -40,6 +44,16 @@ module Jangle
           send(respond_to?(form_helper_method) ? form_helper_method : :text_field, method, html_options),
           :class => 'value'
         )
+    end
+
+    # Ouputs a label and standard Rails code area inside the wrapper.
+    def code_input(method, options)
+      options = options.dup
+      code_class = options.delete(:class) || ''
+      input_html = options.delete(:input_html) || {}
+      input_html[:class] = (%w(code) << input_html[:class] << code_class).flatten.compact.join(' ')
+
+      basic_input_helper(:text_area, :text, method, options.merge(:input_html => input_html))
     end
   end
 end
