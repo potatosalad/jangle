@@ -10,7 +10,7 @@
     <div class='toggle <%= 'open' if branch_open %>'>
       <%= 
         if has_children && !jangle_page.root?
-          link_to span_tag('toggle'), toggle_branch_jangle_page_path(jangle_page), :remote => true
+          link_to content_tag(:span, 'toggle'), toggle_branch_jangle_page_path(jangle_page), :remote => true
         end
       %>
     </div>
@@ -20,14 +20,14 @@
       <% end %>
     </div>
     <div class='action_links'>
-      <%= link_to 'Add Child Page', new_jangle_page_path(:parent_id => jangle_page.id) %>
+      <%= link_to 'Add Child Page', new_jangle_page_path(:'jangle_page[parent_id]' => jangle_page.id) %>
       <%= link_to 'Edit', edit_jangle_page_path(jangle_page) %>
       <%= link_to 'Delete', jangle_page_path(jangle_page), :method => :delete, :confirm => 'Are you sure?' %>
     </div>
     <div class='label'>
       <%= link_to jangle_page.label, edit_jangle_page_path(jangle_page) %>
       <div class='sublabel'>
-        <%= link_to jangle_page.url, jangle_page.full_path, :target => '_blank' %>
+        <%= link_to jangle_page.url, File.join('/', jangle_page.fullpath), :target => '_blank' %>
       </div>
     </div>
   </div>

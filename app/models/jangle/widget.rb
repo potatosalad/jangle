@@ -1,6 +1,5 @@
 class Jangle::Widget
   include Jangle::Mongoid::Document
-  include Mongoid::Slug
   include Mongoid::Tree
 
   include Models::Jangle::Extensions::Parse
@@ -8,7 +7,7 @@ class Jangle::Widget
 
   # -- Fields ---------------------------------------------------------------
   field :label,    :type => String
-  slug  :label
+  field :slug,     :type => String
   field :content,  :type => String
   field :position, :type => Integer, :default => 0
 

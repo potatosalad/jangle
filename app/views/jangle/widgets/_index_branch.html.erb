@@ -20,7 +20,7 @@
       <% end %>
     </div>
     <div class='action_links'>
-      <%= link_to 'Add Child Widget', new_jangle_widget_path(:parent_id => widget.id) %>
+      <%= link_to 'Add Child Widget', new_jangle_widget_path(:'jangle_widget[parent_id]' => widget.id) %>
       <%= link_to 'Edit', edit_jangle_widget_path(widget.id) %>
       <%= link_to 'Delete', jangle_widget_path(widget.id), :method => :delete, :confirm => 'Are you sure?' %>
     </div>

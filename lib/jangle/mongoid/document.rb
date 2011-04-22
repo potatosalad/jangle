@@ -15,7 +15,7 @@ module Jangle
           self.find(id)
         end
 
-        def find_by_slug(*slug)
+        def find_by_slug(slug)
           return if slug.blank?
           self.where(:slug => slug).first
         end

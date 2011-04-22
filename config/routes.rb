@@ -9,6 +9,8 @@ Jangle::Application.routes.draw do
   end
 
   # magic urls
+  get File.join(Jangle.config.cms_css_path, ':slug(.:format)') => 'jangle/rendering#css', :as => 'cms_css'
+  get File.join(Jangle.config.cms_js_path,  ':slug(.:format)') => 'jangle/rendering#js',  :as => 'cms_js'
   match '/'     => 'jangle/rendering#show'
   match '*path' => 'jangle/rendering#show'
 

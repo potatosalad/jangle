@@ -1,6 +1,5 @@
 class Jangle::Layout
   include Jangle::Mongoid::Document
-  include Mongoid::Slug
   include Mongoid::Tree
 
   include Models::Jangle::Extensions::Parse
@@ -8,7 +7,7 @@ class Jangle::Layout
 
   # -- Fields ---------------------------------------------------------------
   field :label,      :type => String
-  slug  :label
+  field :slug,       :type => String
   field :app_layout, :type => String
   field :content,    :type => String
   field :css,        :type => String
@@ -58,8 +57,4 @@ class Jangle::Layout
       app_layout.to_s[0...1] == '_' ? nil : app_layout
     end.compact.unshift([default, nil])
   end
-
-  # -- Instance Methods -----------------------------------------------------
-  # override the slug changes
-  def to_param; self._id.to_s; end
 end

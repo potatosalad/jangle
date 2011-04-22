@@ -29,10 +29,10 @@ module Jangle
         path.gsub!(/^\//, '')
         path = 'index' if path.blank?
 
-        if path != 'index'
-          dirname = File.dirname(path).gsub(/^\.$/, '') # also look for templatized page path
-          path = [path, File.join(dirname, 'content_type_template').gsub(/^\//, '')]
-        end
+        #if path != 'index'
+        #  dirname = File.dirname(path).gsub(/^\.$/, '') # also look for templatized page path
+        #  path = [path, File.join(dirname, 'content_type_template').gsub(/^\//, '')]
+        #end
 
         if page = current_site.pages.any_in(:fullpath => [*path]).first
           page = nil if not page.published? # and current_admin.nil?
@@ -70,7 +70,7 @@ module Jangle
       end
 
       def page_status
-        @page == not_found_page ? :not_found : :ok
+        @page.not_found? ? :not_found : :ok
       end
 
     end

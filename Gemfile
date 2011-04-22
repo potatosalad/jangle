@@ -17,6 +17,7 @@ gem 'inherited_resources', '~> 1.2.2'
 gem 'carrierwave', '~> 0.5.3'
 
 gem 'liquid'
+gem 'RedCloth', '~> 4.2.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
