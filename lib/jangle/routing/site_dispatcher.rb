@@ -45,6 +45,10 @@ module Jangle
           return redirect_to(new_jangle_site_path)
         end
 
+        def render_not_found
+          raise ActionController::RoutingError.new('Not Found')
+        end
+
       end
 
     end

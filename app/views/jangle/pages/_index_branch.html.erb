@@ -1,0 +1,39 @@
+<% 
+  jangle_page    ||= index_branch 
+  has_children  = jangle_page.children.present?
+  has_siblings  = jangle_page.siblings.present?
+  branch_open   = (session[:jangle_page_tree] || []).member?(jangle_page.id.to_s) || jangle_page.root?
+%>
+
+<li id='<%= dom_id(jangle_page) %>'>
+  <div class='item'>
+    <div class='toggle <%= 'open' if branch_open %>'>
+      <%= 
+        if has_children && !jangle_page.root?
+          link_to span_tag('toggle'), toggle_branch_jangle_page_path(jangle_page), :remote => true
+        end
+      %>
+    </div>
+    <div class='icon'>
+      <% if has_siblings %>
+        <div class='dragger'><span>drag</span></div>
+      <% end %>
+    </div>
+    <div class='action_links'>
+      <%= link_to 'Add Child Page', new_jangle_page_path(:parent_id => jangle_page.id) %>
+      <%= link_to 'Edit', edit_jangle_page_path(jangle_page) %>
+      <%= link_to 'Delete', jangle_page_path(jangle_page), :method => :delete, :confirm => 'Are you sure?' %>
+    </div>
+    <div class='label'>
+      <%= link_to jangle_page.label, edit_jangle_page_path(jangle_page) %>
+      <div class='sublabel'>
+        <%= link_to jangle_page.url, jangle_page.full_path, :target => '_blank' %>
+      </div>
+    </div>
+  </div>
+  <% if has_children && branch_open %>
+    <ul>
+      <%= render :partial => 'index_branch', :collection => jangle_page.children %>
+    </ul>
+  <% end %>
+</li>

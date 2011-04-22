@@ -8,6 +8,10 @@ Jangle::Application.routes.draw do
     resources :widgets
   end
 
+  # magic urls
+  match '/'     => 'jangle/rendering#show'
+  match '*path' => 'jangle/rendering#show'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
