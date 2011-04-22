@@ -5,9 +5,7 @@ Jangle::Application.routes.draw do
     resources :pages
     resources :sites
     resources :layouts
-    resources :templates
     resources :widgets
-    resources :snippets
   end
 
   # The priority is based upon order of creation:
