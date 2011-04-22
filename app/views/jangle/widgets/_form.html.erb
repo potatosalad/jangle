@@ -1,0 +1,23 @@
+<% content_for :right_column do %>
+  <div id='widget_save' class='box'>
+    <button></button>
+  </div>
+  render :partial => 'jangle/uploads/index'
+<% end %>
+
+<%= form.inputs do %>
+  <%= form.input :label, :input_html => { :class => 'slugify' } %>
+  <div class='widget_form_extras'>
+    <%= form.input :slug, :input_html => { :class => 'slug' } %>
+    <%= form.input :layout_id, :collection => Jangle::Layout.options_for_select(current_site), :input_html => { 'data-widget-id' => @widget.id }, :label => 'Layout', :include_blank => false %>
+    <%= form.input :parent_id, :collection => Jangle::Widget.options_for_select(current_site, @widget).unshift(['---- Select Parent Widget ----', nil]), :include_blank => false %>
+  </div>
+  <div id='form_blocks'>
+    <%= form.input :content, :as => :code, :class => 'html' %>
+  </div>
+<% end %>
+
+<%= form.buttons do %>
+  <%= form.commit_button %>
+  <%= form.submit 'Preview', :name => 'preview', :id => 'jangle_widget_preview', :disable_builder => true %>
+<% end %>

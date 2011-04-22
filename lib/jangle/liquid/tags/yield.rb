@@ -1,9 +1,8 @@
 # From https://github.com/ludicast/clots
 module Jangle
   class Yield < ::Liquid::Tag
-    include Liquid
 
-    Syntax = /(#{QuotedFragment}+)(\s+(?:with|for)\s+(#{QuotedFragment}+))?/
+    Syntax = /(#{::Liquid::QuotedFragment}+)(\s+(?:with|for)\s+(#{::Liquid::QuotedFragment}+))?/
   
     def initialize(tag_name, markup, tokens)      
       @blocks = []
@@ -21,7 +20,7 @@ module Jangle
       elsif !( markup =~ /\w/ )
         @naked_yield = true        
       else
-        raise SyntaxError.new("Syntax error in tag 'yield' - Valid syntax: yield '[template]' (with|for) [object|collection]")
+        raise ::Liquid::SyntaxError.new("Syntax error in tag 'yield' - Valid syntax: yield '[template]' (with|for) [object|collection]")
       end
 
       super
@@ -31,8 +30,8 @@ module Jangle
       if @naked_yield
         return context['content_for_layout']
       else
-        source  = Liquid::Template.file_system.read_template_file( "#{context['controller_name']}/#{context['action_name']}/#{@template_name}")      
-        partial = Liquid::Template.parse(source)      
+        source  = ::Liquid::Template.file_system.read_template_file( "#{context['controller_name']}/#{context['action_name']}/#{@template_name}")      
+        partial = ::Liquid::Template.parse(source)      
         
         variable = context[@variable_name || @template_name[1..-2]]
         
@@ -56,4 +55,6 @@ module Jangle
       end
     end
   end
+
+  ::Liquid::Template.register_tag('yield', Yield)
 end

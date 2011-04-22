@@ -3,6 +3,9 @@ class Jangle::Layout
   include Mongoid::Slug
   include Mongoid::Tree
 
+  include Models::Jangle::Extensions::Parse
+  include Models::Jangle::Extensions::Render
+
   # -- Fields ---------------------------------------------------------------
   field :label,      :type => String
   slug  :label
@@ -18,6 +21,10 @@ class Jangle::Layout
     :inverse_of => :layouts
   references_many :pages,
     :class_name => 'Jangle::Page',
+    :inverse_of => :layout,
+    :dependent => :nullify
+  references_many :widgets,
+    :class_name => 'Jangle::Widget',
     :inverse_of => :layout,
     :dependent => :nullify
 
