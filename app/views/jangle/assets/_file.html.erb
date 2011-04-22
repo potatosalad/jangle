@@ -1,0 +1,10 @@
+<div class='file' id='<%= dom_id(file) %>'>
+  <%  #file_name = file.source.filename
+      #file_ext  = file.extname
+      #if (file_name.size - file_ext.size) > 30
+      #  file_name = file_name.truncate(30) + file_ext
+      #end 
+  %>
+  <%= link_to file.name, file.source.url, :target => '_blank', :class => 'filename' %>
+  <%= link_to content_tag(:span, 'x'), jangle_asset_path(file.id), :method => :delete, :remote => true, :class => 'delete' %>
+</div>

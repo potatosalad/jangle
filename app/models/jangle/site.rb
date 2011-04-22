@@ -14,20 +14,12 @@ class Jangle::Site
     :class_name => 'Jangle::Page',
     :inverse_of => :site,
     :dependent => :destroy
-  references_many :templates,
-    :class_name => 'Jangle::Template',
-    :inverse_of => :site,
-    :dependent => :destroy
   references_many :widgets,
     :class_name => 'Jangle::Widget',
     :inverse_of => :site,
     :dependent => :destroy
-  references_many :snippets,
-    :class_name => 'Jangle::Snippet',
-    :inverse_of => :site,
-    :dependent => :destroy
-  references_many :uploads,
-    :class_name => 'Jangle::Upload',
+  references_many :assets,
+    :class_name => 'Jangle::Asset',
     :inverse_of => :site,
     :dependent => :destroy
 

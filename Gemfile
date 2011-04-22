@@ -15,6 +15,7 @@ gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'formtastic', '~> 1.2.3'
 gem 'inherited_resources', '~> 1.2.2'
 gem 'carrierwave', '~> 0.5.3'
+gem 'mini_magick'
 
 gem 'liquid'
 gem 'RedCloth', '~> 4.2.7'

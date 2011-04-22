@@ -6,6 +6,7 @@ Jangle::Application.routes.draw do
     resources :sites
     resources :layouts
     resources :widgets
+    resources :assets
   end
 
   # magic urls

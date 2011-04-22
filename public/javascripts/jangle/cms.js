@@ -242,7 +242,7 @@ $.CMS = function(){
         unique_names:     true,
         multipart:        true,
         multipart_params: { authenticity_token: auth_token, format: 'js' },
-        url:              '/' + admin_path_prefix + '/uploads'
+        url:              '/' + admin_path_prefix + '/assets'
       });
       uploader.init();
       uploader.bind('FilesAdded', function(up, files) {
