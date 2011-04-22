@@ -3,3 +3,8 @@ db/*.sqlite3
 log/*.log
 tmp/
 .DS_Store
+public/images/*.gif
+public/images/*.jpg
+public/images/*.png
+public/images/*.psd
+public/css/

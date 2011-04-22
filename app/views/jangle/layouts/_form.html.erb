@@ -3,7 +3,7 @@
 <% end %>
 
 <%= form.inputs do %>
-  <%= form.input :label, :label => 'Layout Name', :input_html => { :class => 'slugify' } %>
+  <%= form.input :label, :label => 'Layout Name', :input_html => { :class => (@layout.new_record? ? 'slugify' : nil) } %>
   <%= form.input :slug, :hint => 'The slug will be generated automatically if left blank.', :input_html => { :class => 'slug' } %>
   <%= form.input :parent_id, :collection => Jangle::Layout.options_for_select(current_site, @layout).unshift(['---- Select Parent Layout ----', nil]), :include_blank => false %>
   <%= form.input :app_layout, :collection => Jangle::Layout.app_layouts_for_select('---- Select Application Layout ----'), :include_blank => false %>

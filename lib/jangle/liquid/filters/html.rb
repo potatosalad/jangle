@@ -137,7 +137,8 @@ module Jangle
         end
 
         def asset_url(path)
-          ThemeAssetUploader.url_for(@context.registers[:site], path)
+          File.join('/', path)
+          #ThemeAssetUploader.url_for(@context.registers[:site], path)
         end
 
       end

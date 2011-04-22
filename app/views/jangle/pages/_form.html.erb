@@ -10,7 +10,7 @@
 <% end %>
 
 <%= form.inputs do %>
-  <%= form.input :label, :input_html => { :class => 'slugify' } %>
+  <%= form.input :label, :input_html => { :class => (@page.new_record? ? 'slugify' : nil) } %>
   <div class='page_form_extras'>
     <%= form.input :slug, :input_html => { :class => 'slug' }, :hint => "Special slugs are 'index' and '404'" %>
     <%= form.input :layout_id, :collection => Jangle::Layout.options_for_select(current_site), :input_html => { 'data-page-id' => @page.id }, :label => 'Layout', :include_blank => false %>
